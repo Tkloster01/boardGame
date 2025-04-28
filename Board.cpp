@@ -1,6 +1,10 @@
 #include "Board.h"
 #include <string>
 #include <iostream>
+
+#include <cstdlib> // For rand() and srand()
+#include <ctime>   // For time()
+
 #define RED "\033[48;2;230;10;10m"
 #define GREEN "\033[48;2;34;139;34m"  /* Grassy Green (34,139,34) */
 #define BLUE "\033[48;2;10;10;230m"
@@ -13,17 +17,31 @@
 
 using namespace std;
 
-void Board::initializeBoard()
+Board::Board()
 {
-    // Seed random number generator in your main function once
-    for (int i = 0; i < 2; i++)
-    {
-        initializeTiles(i);  // This ensures each lane has a unique tile distribution
-    }
+    _player_count = 1;
+    setPlayerList();
+    initializeTiles(0);
 }
 
-#include <cstdlib> // For rand() and srand()
-#include <ctime>   // For time()
+void Board::setPlayerList(){ // Sets the players and their lanes
+    for (int i = 0; i < 5; ++i){
+        _player[i].player_num = (i + 1);
+        _player[i].lane = -1;
+        _player[i].pos = 0;
+        _player[i].character = 0;
+        _player[i].pride_point = 10;
+        _player[i].stamina = 0;
+        _player[i].strength = 0;
+        _player[i].wisdom = 0;
+        _player[i].advisor = 0; //Sets ALL possible player arrays to 0. Avoids issues if _player_count < 4
+    }
+
+    // _player[5].pos[0] = -1; 
+    _player[4].pos = -1; 
+    //Creates an extra player for displaying the board. 
+    // pos is invalid so the displayed board won't include any players
+}
 
 void Board::initializeTiles(int lane)
 {
@@ -75,13 +93,16 @@ void Board::initializeTiles(int lane)
     }
 }
 
-
-Board::Board()
+void Board::initializeBoard()
 {
-    _player_count = 1;
-    setPlayerList();
-    initializeTiles(0);
+    // Seed random number generator in your main function once
+    for (int i = 0; i < 2; i++)
+    {
+        initializeTiles(i);  // This ensures each lane has a unique tile distribution
+    }
 }
+
+
 
 Board::Board(int player_count)
 {
@@ -98,28 +119,12 @@ Board::Board(int player_count)
     initializeBoard(); // Initialize tiles
 }
 
-void Board::setPlayerList(){ // Sets the players and their lanes
-    for (int i = 0; i < 5; ++i){
-        _player[i].player_num[0] = (i + 1);
-        _player[i].lane[0] = -1;
-        _player[i].pos[0] = 0;
-        _player[i].character[0] = 0;
-        _player[i].pride_point[0] = 10;
-        _player[i].stamina[0] = 0;
-        _player[i].strength[0] = 0;
-        _player[i].wisdom[0] = 0;
-        _player[i].advisor[0] = 0; //Sets ALL possible player arrays to 0. Avoids issues if _player_count < 4
-    }
 
-    _player[5].pos[0] = -1; 
-    //Creates an extra player for displaying the board. 
-    // pos is invalid so the displayed board won't include any players
-}
 
 bool Board::isPlayerOnTile(int slot, int pos, int lane)
 {
-    if(_player[slot].lane[0] == lane){
-        if (_player[slot].pos[0] == pos){
+    if(_player[slot].lane == lane){
+        if (_player[slot].pos == pos){
             return true;
         }
     }
@@ -205,8 +210,8 @@ void Board::updateStats(int slot){
 
 bool Board::movePlayer(int slot, int roll)
 {
-    _player[slot].pos[0] += roll;
-    if (_player[slot].pos[0] == _BOARD_SIZE - 1){
+    _player[slot].pos += roll;
+    if (_player[slot].pos == _BOARD_SIZE - 1){
     return true;
     }
     return false;
@@ -215,7 +220,7 @@ bool Board::movePlayer(int slot, int roll)
 int Board::getPlayerPosition(int slot)
 {
     if (slot >= 0 && slot <= _player_count){
-    return _player[slot].pos[0];
+    return _player[slot].pos;
     }
     return -1;
 }

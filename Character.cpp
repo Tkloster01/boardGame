@@ -49,9 +49,7 @@ void Apple::updateCharFile(int selection){
     }
 }
 
-void Apple::saveCharacter(int player_count){
-    Orange CharList;
-
+void Apple::saveCharacter(int player_count, Orange *CharList) {
     int selection;
     int flag = 0;
     int purple = 0;
@@ -68,19 +66,23 @@ void Apple::saveCharacter(int player_count){
                 j = 4;
                 --i;
             }
+            // Because we are using a reference to the address, you use a -> instead of a .
             else if (taken[j] != selection && flag == 3){
-                CharList.CharInfo(i, selection);
+                CharList -> CharInfo(i, selection); // set the player value in Apple
+                _player[i] = CharList -> getPlayer(i); // set the player value in Orange
+
                 taken[i] = selection;
+
                 flag = 0;
                 ++purple;
-                cout << _player[0].stamina[0] << endl;
+                cout << _player[0].stamina << endl;
 
                 updateCharFile(selection);
                 if (purple < player_count){
                     displayCharFile();
                 }
             }
-            else{
+            else {
                 ++flag;
             }
         }
@@ -89,4 +91,10 @@ void Apple::saveCharacter(int player_count){
 
 void Apple::updateCharacter(){
 
+}
+
+void Apple::displayPlayers(int numPlayers) {
+    for (int i = 0; i < numPlayers; i++) {
+        cout << "Apple Players: " << _player[i].stamina << endl;
+    }
 }

@@ -17,7 +17,12 @@ int main() {
 
     Board gameBoard; // runs the constructor to set up the board
 
-    characterSheet.saveCharacter(_player_count);
+    // Because we want to reference the setUpGame created above, we need to be explicit
+    // in how you reference it, the & means that you are passing the address of the object you just created
+    characterSheet.saveCharacter(_player_count, &setUpGame);
+
+    setUpGame.displayPlayers(_player_count);
+    characterSheet.displayPlayers(_player_count);
 
     //First prompt the user for the total number of players >> _player_count
     //Go one by one and ask for their character choice from the text file and path choice (0 for cub, 1 for pride)

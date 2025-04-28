@@ -1,15 +1,20 @@
+#ifndef PLAYER
+#define PLAYER
+
 #include <array>
 
 struct Player
 {
-    int player_num[1];
-    int lane[1];
-    int pos[1];
+    int player_num;
+    int lane;
+    int pos;
 
-    int character[1];
-    int pride_point[1];
-    int stamina[1];
-    int strength[1];
-    int wisdom[1];
-    char advisor[1];
+    int character;
+    int pride_point;
+    int stamina;
+    int strength;
+    int wisdom;
+    char advisor;
 };
+
+#endif

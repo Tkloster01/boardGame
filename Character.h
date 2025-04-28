@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include "Player.h"
+#include "Start.h"
 
 using namespace std;
 
@@ -16,8 +17,9 @@ class Apple {
         void setUp();
         void displayCharFile();
         void updateCharFile(int selection);
-        void saveCharacter(int player_count);
+        void saveCharacter(int player_count, Orange *charList);
         void updateCharacter();
+        void displayPlayers(int numPlayers);
 };
 
 #endif

@@ -1,12 +1,11 @@
 #ifndef TURN_H
-#define START_H
+#define TURN_H
 #include <string>
 #include <fstream>
 
 using namespace std;
 
-class Lemon
-{
+class Lemon {
 private:
 
 public:

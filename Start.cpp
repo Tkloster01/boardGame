@@ -38,16 +38,31 @@ int Orange::totalPlayers(){
             }
         }
     }
+    setPlayerCount(_player_count); // sets the private variable
     return _player_count;
 }
 
 void Orange::CharInfo(int i, int selection){
     Character list;
 
-    _player[i].character[0] = selection;
-    _player[i].pride_point[0] = list.pride_point[0];
-    _player[i].stamina[0] = list.stamina[selection];
-    cout << _player[0].stamina[0] << endl;
-    _player[i].strength[0] = list.strength[selection];
-    _player[i].wisdom[0] = list.wisdom[selection];
+    _player[i].character = selection;
+    _player[i].pride_point = list.pride_point[0];
+    _player[i].stamina = list.stamina[selection];
+    cout << _player[0].stamina << endl;
+    _player[i].strength = list.strength[selection];
+    _player[i].wisdom = list.wisdom[selection];
+}
+
+Player Orange::getPlayer(int playerIndex) {
+    return _player[playerIndex];
+}
+
+void Orange::setPlayerCount(int playerCount) {
+    _player_count = playerCount;
+}
+
+void Orange::displayPlayers(int playerCount) {
+    for (int i = 0; i < playerCount; i++) {
+        cout << "Orange Players: " << _player[i].stamina << endl;
+    }
 }
