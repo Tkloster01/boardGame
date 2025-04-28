@@ -1,0 +1,9 @@
+     Name   | Age | Strength | Stamina | Wisdom | Pride Points
+Apollo |  5  |    500   |   500   |  1,000 |   20,000    
+(Taken)
+Elsa   | 12  |    100   |   200   |    300 |   20,000    
+Leo    |  9  |    300   |   400   |    500 |   20,000    
+temp   |  0  |     0    |    0    |    0   |   20,000    
+temp   |  0  |     0    |    0    |    0   |   20,000    
+temp   |  0  |     0    |    0    |    0   |   20,000    
+ 0  |     0    |    0    |    0   |   20,000    
