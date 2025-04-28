@@ -61,8 +61,8 @@ void Orange::setPlayerCount(int playerCount) {
     _player_count = playerCount;
 }
 
-void Orange::displayPlayers(int playerCount) {
-    for (int i = 0; i < playerCount; i++) {
+void Orange::displayPlayers() {
+    for (int i = 0; i < _player_count; i++) {
         cout << "Orange Players: " << _player[i].stamina << endl;
     }
 }

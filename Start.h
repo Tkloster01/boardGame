@@ -17,7 +17,7 @@ class Orange {
         int totalPlayers();
         void CharInfo(int i, int selection);
         void setPlayerCount(int playerCount);
-        void displayPlayers(int playerCount);
+        void displayPlayers();
         Player getPlayer(int playerIndex);
 };
 

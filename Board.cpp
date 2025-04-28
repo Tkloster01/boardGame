@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "Start.h"
 #include <string>
 #include <iostream>
 
@@ -41,6 +42,13 @@ void Board::setPlayerList(){ // Sets the players and their lanes
     _player[4].pos = -1; 
     //Creates an extra player for displaying the board. 
     // pos is invalid so the displayed board won't include any players
+}
+
+void Board::fillPlayerList(Orange start, int playerNum) {
+    for (int i = 0; i < playerNum; i++) {
+        _player[i] = start.getPlayer(i);
+    }
+    _player_count = playerNum;
 }
 
 void Board::initializeTiles(int lane)
@@ -223,4 +231,10 @@ int Board::getPlayerPosition(int slot)
     return _player[slot].pos;
     }
     return -1;
+}
+
+void Board::displayPlayers() {
+    for (int i = 0; i < _player_count; i++) {
+        cout << "Board Players: " << _player[i].stamina << endl;
+    }
 }

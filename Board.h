@@ -2,6 +2,7 @@
 #define BOARD_H
 #include "Tile.h"
 #include "Player.h"
+#include "Start.h"
 
 class Board {
     private:
@@ -24,6 +25,8 @@ class Board {
         void updateStats(int slot);
         bool movePlayer(int slot, int roll);
         int getPlayerPosition(int slot);
+        void displayPlayers();
+        void fillPlayerList(Orange start, int playerNum);
 };
 
 #endif

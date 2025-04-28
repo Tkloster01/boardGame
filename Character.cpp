@@ -70,6 +70,7 @@ void Apple::saveCharacter(int player_count, Orange *CharList) {
             else if (taken[j] != selection && flag == 3){
                 CharList -> CharInfo(i, selection); // set the player value in Apple
                 _player[i] = CharList -> getPlayer(i); // set the player value in Orange
+                
 
                 taken[i] = selection;
 
